@@ -7,8 +7,7 @@ Car Rental Application - Pack Rider
 Note: Please go through the navigation links below for clear idea.
 
 **How to Use Pack Rider:**
-
-Preconfiged Super Admin: email: sysadmin@ncsu.edu, password: admin
+Link: https://packrider.herokuapp.com
 Preconfiged Admin: email: admin@ncsu.edu, password: admin123
 
 Please don't delete the admin or change the passwords for admin/superadmin.
