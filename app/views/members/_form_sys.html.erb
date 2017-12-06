@@ -1,0 +1,23 @@
+<td><% if session[:member_id]!=nil %></td>
+  <h2>New Super Admin Creation</h2>
+  <%= form_tag('/createsys', method: :post) %>
+<div align="center">
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= email_field_tag :email %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <%= submit_tag("Create Super Admin") %>
+<% end %>
+  </div>
+  <div class="btn btn-success topcorner">
+    <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

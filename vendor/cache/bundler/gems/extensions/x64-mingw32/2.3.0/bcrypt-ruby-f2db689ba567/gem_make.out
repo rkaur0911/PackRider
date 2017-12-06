@@ -1,0 +1,20 @@
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/bundler/gems/bcrypt-ruby-f2db689ba567/ext/mri
+C:/ruby-2.3.3-x64-mingw32/bin/ruby.exe -r ./siteconf20170922-3792-oyevap.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/bundler/gems/bcrypt-ruby-f2db689ba567/ext/mri
+make "DESTDIR=" clean
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/bundler/gems/bcrypt-ruby-f2db689ba567/ext/mri
+make "DESTDIR="
+generating bcrypt_ext-x64-mingw32.def
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.so
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/bundler/gems/bcrypt-ruby-f2db689ba567/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20170922-3792-1blq0eo

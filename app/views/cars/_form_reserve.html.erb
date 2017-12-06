@@ -1,0 +1,25 @@
+<%= form_tag('/reservesubmit', method: :post) do %>
+<% if session[:is_admin?] %>
+        <div class="field padding">
+          <%= label_tag :email, 'Member Email ID' %><br />
+          <%= email_field_tag :email %>
+        </div>
+<% end %>
+    <div class="form-group padding">
+      <%= label_tag :datetime1, 'From Date' %>
+      <div class="input-group date" id="datetimepicker1">
+        <%= text_field_tag :datetime1, nil, class: "form-control" %>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      </div>
+    </div>
+
+    <div class="form-group padding">
+      <%= label_tag :datetime2, 'To Date' %>
+      <div class="input-group date" id="datetimepicker2">
+        <%= text_field_tag :datetime2, nil, class: "form-control" %>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      </div>
+    </div>
+    <div class="padding">
+      <%= submit_tag("Reserve") %></div>
+<% end %>

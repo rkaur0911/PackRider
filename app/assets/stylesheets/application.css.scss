@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+
+ *
+
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-datetimepicker";
+
+.page-header{
+  margin:0 auto;
+  background-color:#1a1a1a;
+  color:#FAFAFA;
+  padding:18px 0 18px 0;
+  font-size: 40px;
+  height: 92px;
+}
+.topcorner{
+  position:absolute;
+  top:90px;
+  right:0px;
+}
+.topcorner2{
+  position:absolute;
+  top:90px;
+  right:78px;
+}
+.navbar {
+  min-height: 38px;
+  background-color: #f55e55;
+}
+
+th {
+  background:#b5cfd2;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+}
+
+td {
+  background:#dcddc0;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+}
+
+.loginheader{
+  position: relative;
+  height: 20%;
+}
+
+.btn-success{
+ background-color: #00ace6;
+ border-color: #00ace6;
+ margin: 5px;
+}
+
+.btn-success:hover{
+  background-color: #673b93;
+  border-color: #673b93;
+}
+.padding,h1{
+  padding: 2px 0px 0px 10px;
+}
+.input-group{
+  width: 50%;
+}
+

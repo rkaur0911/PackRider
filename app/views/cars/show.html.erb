@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<br>
+<br>
+<div class="padding">
+<p>
+  <b>License:</b>
+  <%= @cars.lic %>
+</p>
+
+<p>
+  <b>Manufacturer:</b>
+  <%= @cars.manf %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @cars.mod %>
+</p>
+
+<p>
+  <b>Style:</b>
+  <%= @cars.style %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @cars.location %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @cars.status %>
+</p>
+
+
+
+<% if session[:is_admin?] %>
+    <% if @cars.status == "checkedout" || @cars.status == "Reserved" %>
+        <%if !@recenthistory.nil?%>
+            <p>
+              <b> Recent Checkout/Resevered code:</b>
+              <%= @recenthistory.email %>
+            </p>
+        <%end%>
+        <%end%>
+    <%end%>
+
+<p>
+  <b>Hourly Rental Rate:</b>
+  <%= @cars.rate %>
+</p>
+</div>
+<% if session[:is_admin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'Edit', edit_car_path(@cars),:style =>'color:#FFFFFF;' %></div>
+    <div class="btn btn-success">
+      <%= link_to 'View History', carhistory_path(:car_lic=>@cars.lic), method: :get,:style =>'color:#FFFFFF;' %></div>
+<% end %>
+<br>
+<div class="btn btn-success topcorner2">
+  <%= link_to 'Back', cars_path, :style =>'color:#FFFFFF;' %></div>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

@@ -1,0 +1,57 @@
+<td><% if session[:member_id]!=nil %></td>
+   <td><% if session[:is_admin?] %></td>
+      <h2 align="center">New Admin Creation</h2>
+      <%= form_tag('/createad', method: :post) %>
+          <div class="field" align="center">
+            <%= label_tag :name %><br />
+            <%= text_field_tag :name %>
+          </div>
+          <div class="field" align="center">
+            <%= label_tag :email %><br />
+            <%= email_field_tag :email %>
+          </div>
+          <div class="field" align="center">
+            <%= label_tag :password %><br />
+            <%= password_field_tag :password %>
+          </div>
+         <br />
+         <div class="btn btn-success topcorner">
+           <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>
+         <div class="actions" align="center">
+           <%= submit_tag("Create Admin") %>
+         </div>
+      <% end %>
+<%else%>
+      <h2 align="center">Sign up</h2>
+      <%= form_for(@members) do |f| %>
+      <% if @members.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@members.errors.count, "error") %> prohibited this member from being saved:</h2>
+          <ul>
+            <% @members.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="field" align="center">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field" align="center">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+    <div class="field" align="center">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+    <br />
+    <div class="actions" align="center">
+      <%= f.submit "Sign up" %>
+    </div>
+
+<% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_tag('/search', method: :post) do %>
+    <p class="padding">
+      <%= label_tag(:item, "Search: ") %>
+      <%= text_field_tag(:item)  %>
+      <%= submit_tag("Search") %>
+    </p>
+<% end %>

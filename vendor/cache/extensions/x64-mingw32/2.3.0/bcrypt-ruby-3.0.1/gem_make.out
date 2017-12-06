@@ -1,0 +1,26 @@
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/gems/bcrypt-ruby-3.0.1/ext/mri
+C:/ruby-2.3.3-x64-mingw32/bin/ruby.exe -r ./siteconf20170922-11456-1uwo48f.rb extconf.rb
+creating Makefile
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR="
+generating bcrypt_ext-x64-mingw32.def
+compiling bcrypt_ext.c
+bcrypt_ext.c: In function 'bcrypt_wrapper':
+bcrypt_ext.c:27:5: warning: implicit declaration of function 'ruby_bcrypt' [-Wimplicit-function-declaration]
+bcrypt_ext.c: At top level:
+bcrypt_ext.c:25:14: warning: 'bcrypt_wrapper' defined but not used [-Wunused-function]
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+In file included from wrapper.c:27:0:
+c:/ruby-2.3.3-x64-mingw32/include/ruby-2.3.0/ruby/backward/util.h:2:2: warning: #warning use "ruby/util.h" instead of bare "util.h" [-Wcpp]
+linking shared-object bcrypt_ext.so
+
+current directory: C:/Users/prameela parasa/rottenpotatoes/vendor/cache/gems/bcrypt-ruby-3.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20170922-11456-1tfuw31

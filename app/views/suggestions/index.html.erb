@@ -1,0 +1,30 @@
+<h1> Listing Suggestions </h1>
+<% if @suggestions.any? %>
+    <table>
+      <tr>
+        <th>S. No.</th>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Style</th>
+        <th>Suggested By</th>
+      </tr>
+      <% id=0 %>
+      <% @suggestions.each do |suggestion| %>
+          <tr>
+            <td><%= id+=1 %></td>
+            <td><%= suggestion.manf %></td>
+            <td><%= suggestion.mod %></td>
+            <td><%= suggestion.style %></td>
+            <td><%= suggestion.email %></td>
+            <td><%= link_to 'Show', suggestion_path(suggestion) %></td>
+            <td><%= link_to 'Approve', edit_suggestion_path(suggestion) %></td>
+            <td><%= link_to 'Delete', suggestion_path(suggestion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      <tr>
+    </table>
+<% else %>
+    <h3>No suggestions</h3>
+<% end %>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

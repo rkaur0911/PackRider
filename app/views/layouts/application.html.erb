@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pack Rider</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render "layouts/header" %>
+<% if flash[:notice] %>
+    <div id = 'error_explanation' class="notice" style="color:red">
+      <h2>Message</h2>
+      <ul>
+        <li><%= flash[:notice] %></li>
+      </ul>
+    </div>
+<% end %>
+<section class="app-cont">
+
+  <%= yield %>
+</section>
+</body>
+</html>

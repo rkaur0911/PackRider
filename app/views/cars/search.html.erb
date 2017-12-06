@@ -1,0 +1,46 @@
+<br>
+<%= render 'form_search' %>
+<div class="padding ">
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>License</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Style</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Hourly Rental Rate</th>
+  </tr>
+
+<% if !@entry.nil? %>
+    <% id=0 %>
+    <h4><%= @entry.count %> entries found</h4>
+      <% @entry.each do |car| %>
+          <tr>
+            <td><%= id+=1 %></td>
+            <td><%= car.lic %></td>
+            <td><%= car.manf %></td>
+            <td><%= car.mod %></td>
+            <td><%= car.style %></td>
+            <td><%= car.location %></td>
+            <td><%= car.status %></td>
+            <td><%= car.rate %></td>
+            <td><%= link_to 'Show', car %></td>
+            <% if car.status == "Available"  %>
+                <td><%= link_to 'checkout',checkout_path(:car_id => car.id), method: :post %></td>
+            <%end%>
+            <td><%= link_to 'Reserve', reserve_path(:car_id => car.id), method: :get %></td>
+            <% if session[:is_admin?] %>
+                  <td><%= link_to 'Edit', edit_car_path(car) %></td>
+                  <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <%end %>
+              </tr>
+      <%end %>
+      </table>
+<% end %>
+</div>
+<div class="btn btn-success topcorner2">
+  <%= link_to 'Back', cars_path, :style =>'color:#FFFFFF;' %></div>
+<div class="btn btn-success topcorner">
+<%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

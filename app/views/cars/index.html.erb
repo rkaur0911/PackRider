@@ -1,0 +1,73 @@
+<p class="padding">Welcome,  <%= current_user.name %> </p>
+
+<% if session[:is_admin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'New Admin', new_member_path, :style =>'color:#FFFFFF;' %></div>
+  <%end %>
+  <% if session[:is_sysadmin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'New Super Admin',sys_admin_login_path, :style =>'color:#FFFFFF;' %></div>
+  <% end %>
+<div class="btn btn-success">
+  <%= link_to 'Profile/History', member_path(session[:member_id]), method: :get, :style =>'color:#FFFFFF;'%></div>
+<% if !session[:is_admin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'New Suggestion', new_suggestion_path(current_user), :style =>'color:#FFFFFF;' %></div>
+<% end %>
+<% if session[:is_admin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'New car', new_car_path, :style =>'color:#FFFFFF;' %></div>
+    <div class="btn btn-success">
+      <%= link_to 'List Members', members_path(),:style =>'color:#FFFFFF;' %></div>
+    <div class="btn btn-success">
+      <%= link_to 'List Suggestions', suggestions_path(),:style =>'color:#FFFFFF;' %></div>
+<%end %>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Log Out', logout_path(session[:member_id]), method: :delete, :style =>'color:#FFFFFF;'%></div>
+<p>
+
+<h1>Listing Cars</h1>
+  <%= render 'form_search' %>
+</p>
+
+<div class="padding">
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>License</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+    <th>Style</th>
+    <th>Location</th>
+    <th>Status</th>
+    <th>Hourly Rental Rate</th>
+  </tr>
+
+  <% id=0 %>
+  <% @cars.each do |car| %>
+      <tr>
+        <td><%= id+=1 %></td>
+        <td><%= car.lic %></td>
+        <td><%= car.manf %></td>
+        <td><%= car.mod %></td>
+        <td><%= car.style %></td>
+        <td><%= car.location %></td>
+        <td><%= car.status %></td>
+        <td><%= car.rate %></td>
+        <td><%= link_to 'Show Details', car %></td>
+        <% if car.status == "Available"  %>
+            <td><%= link_to 'checkout',checkout_path(:car_id => car.id), method: :post %></td>
+        <%end%>
+        <td><%= link_to 'Reserve', reserve_path(:car_id => car.id), method: :get %></td>
+        <% if (!session[:is_admin?]||!session[:is_sysadmin?]) && car.status=="checkedout"%>
+              <td><%= link_to 'Notify',createnotify_path(:car_lic => car.lic), method: :post %></td>
+          <%end %>
+        <% if session[:is_admin?] %>
+              <td><%= link_to 'Edit', edit_car_path(car) %></td>
+              <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end %>
+      </tr>
+  <%end %>
+</table>
+</div>

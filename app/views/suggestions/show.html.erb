@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<%= @suggestion.lic %>
+</p>
+
+<p>
+  <strong> Manufacturer:</strong>
+  <%= @suggestion.manf %>
+</p>
+
+<p>
+  <strong> Model:</strong>
+  <%= @suggestion.mod %>
+</p>
+
+<p>
+  <strong> Style:</strong>
+  <%= @suggestion.style %>
+</p>
+<p>
+  <strong> Suggested By:</strong>
+  <%= @suggestion.email %>
+</p>
+
+<% if session[:is_admin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'Approve', edit_suggestion_path(@suggestion), :style =>'color:#FFFFFF;'%></div>
+<% end %>
+<br>
+<% if session[:is_admin?] %>
+    <%= link_to 'Back', suggestions_url %>
+<% else %>
+    <%= link_to 'Back', cars_url %>
+<% end %>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

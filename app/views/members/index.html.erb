@@ -1,0 +1,89 @@
+<h1>Listing Users</h1>
+<div class="btn btn-success">
+  <%= link_to 'New Admin', new_member_path, :style =>'color:#FFFFFF;' %></div>
+<% if session[:is_sysadmin?] %>
+    <div class="btn btn-success">
+      <%= link_to 'New Super Admin',sys_admin_login_path, :style =>'color:#FFFFFF;' %></div>
+<% end %>
+      <div class="btn btn-success">
+      <%= link_to 'Profile/History', member_path(session[:member_id]), method: :get, :style =>'color:#FFFFFF;'  %></div>
+  <div class="btn btn-success">
+  <%= link_to 'Log Out', logout_path(session[:member_id]), method: :delete, :style =>'color:#FFFFFF;'  %></div>
+  <div class="btn btn-success">
+  <%= link_to 'List Suggestions', suggestions_path(),:style =>'color:#FFFFFF;' %></div>
+<div class = "padding">
+<h3>Listing Members</h3>
+
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>Name</th>
+    <th>EMail ID</th>
+  </tr>
+
+  <% id=0 %>
+  <% @members.each do |member| %>
+      <% if (member.state==nil || member.state=="user") %>
+        <tr>
+          <td><%= id+=1 %></td>
+          <td><%= member.name %></td>
+          <td><%= member.email %></td>
+          <td><%= link_to 'Show/Edit', member %></td>
+          <td><%= link_to 'View History', histories_path(:email=> member.email),method: :get %></td>
+          <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end %>
+        </tr>
+  <%end %>
+</table>
+
+<h3>Listing Admins</h3>
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>Name</th>
+    <th>EMail ID</th>
+  </tr>
+
+  <% id=0 %>
+  <% @members.each do |member| %>
+      <% if (member.state=="admin") && (session[:email]!=member.email) %>
+            <tr>
+              <td><%= id+=1 %></td>
+              <td><%= member.name %></td>
+              <td><%= member.email %></td>
+              <td><%= link_to 'Show/Edit', member %></td>
+              <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end %>
+        </tr>
+  <%end %>
+</table>
+
+<% if session[:is_sysadmin?] %>
+  <h3>Listing Sys Admins</h3>
+  <table>
+    <tr>
+      <th>S. No.</th>
+      <th>Name</th>
+      <th>EMail ID</th>
+      <th></th>
+    </tr>
+
+    <% id=0 %>
+    <% @members.each do |member| %>
+        <% if (member.state=="sysadmin") && (session[:email]!=member.email) %>
+              <tr>
+                <td><%= id+=1 %></td>
+                <td><%= member.name %></td>
+                <td><%= member.email %></td>
+                <td><%= link_to 'Show/Edit', member %></td>
+          <%end %>
+          </tr>
+    <%end %>
+  </table>
+<% end %>
+</div>
+<div class="btn btn-success topcorner2">
+  <%= link_to 'Back', cars_path, :style =>'color:#FFFFFF;' %></div>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

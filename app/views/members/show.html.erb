@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<h2>Profile</h2>
+<p>
+  <b>Name:</b>
+  <%= @members.name %>
+</p>
+
+<p>
+  <b>email:</b>
+  <%= @members.email %>
+</p>
+
+<div class="btn btn-success">
+  <%= link_to 'Edit', edit_member_path(@members), :style =>'color:#FFFFFF;' %></div>
+<% if !session[:is_admin?] %>
+<div class="btn btn-success">
+  <%= link_to 'View History', histories_path(:email=> @members.email,:tempuser=>@members.id),method: :get, :style =>'color:#FFFFFF;' %></div>
+  <% end %>
+<div class="btn btn-success topcorner">
+ <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>

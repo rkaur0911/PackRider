@@ -1,0 +1,29 @@
+<h1>Listing histories</h1>
+<div class="padding">
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>Email</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Status</th>
+  </tr>
+
+  <% id=0 %>
+  <% @histories.each do |history| %>
+      <tr>
+        <td><%= id+=1 %></td>
+        <td><%= history.email %></td>
+        <td><%= history.from %></td>
+        <td><%= history.to %></td>
+        <td><%= history.status %></td>
+      </tr>
+  <%end %>
+</table>
+</div>
+<div class="btn btn-success topcorner2">
+  <%= link_to 'Back', car_path(session[:car_id]), method: :get, :style =>'color:#FFFFFF;' %></div>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>
+

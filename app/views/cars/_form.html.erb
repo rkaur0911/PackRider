@@ -1,0 +1,41 @@
+<%= form_for(@cars) do |f| %>
+  <% if @cars.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cars.errors.count, "error") %> prohibited this car from being saved:</h2>
+      <ul>
+      <% @cars.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+<div align="center">
+    <div class="field">
+      <%= f.label :License %><br />
+      <%= f.text_field :lic , required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Manufacturer %><br />
+      <%= f.text_field :manf, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Model %><br />
+      <%= f.text_field :mod, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Style %><br />
+      <%= f.text_field :style, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Location %><br />
+      <%= f.text_field :location, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :HourlyRentalRate %><br />
+      <%= f.text_field :rate, required:true %>
+    </div>
+<br>
+      <%= f.submit %>
+</div>
+<% end %>

@@ -1,0 +1,48 @@
+<%= form_for(@suggestion) do |f| %>
+    <% if @suggestion.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@suggestion.errors.count, "error") %> prohibited this suggestion from being saved:
+          </h2>
+          <ul>
+            <% @suggestion.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if session[:is_admin?] %>
+    <div class="field">
+      <%= f.label :License %><br />
+      <%= f.text_field :lic , required:true %>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :Manufacturer %><br />
+      <%= f.text_field :manf, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Model %><br />
+      <%= f.text_field :mod, required:true %>
+    </div>
+    <div class="field">
+      <%= f.label :Style %><br />
+      <%= f.text_field :style, required:true %>
+    </div>
+    <% if session[:is_admin?] %>
+      <div class="field">
+        <%= f.label :Location %><br />
+        <%= f.text_field :location, required:true %>
+      </div>
+      <div class="field">
+        <%= f.label :Status %><br />
+        <%= f.text_field :status, required:true %>
+      </div>
+      <div class="field">
+        <%= f.label :HourlyRentalRate %><br />
+        <%= f.text_field :rate, required:true %>
+      </div>
+     <% end %>
+    <br>
+    <%= f.submit %>
+<% end %>

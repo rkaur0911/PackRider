@@ -1,0 +1,50 @@
+<h1>Listing Histories</h1>
+<div class="padding">
+<table>
+  <tr>
+    <th>S. No.</th>
+    <th>License</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Status</th>
+    <th>Payable Amount</th>
+  </tr>
+
+  <% id=0 %>
+  <% @histories.each do |history| %>
+      <tr>
+        <td><%= id+=1 %></td>
+        <td><%= history.lic %></td>
+        <td><%= history.from %></td>
+        <td><%= history.to %></td>
+        <td><%= history.status %></td>
+        <td><%= history.amount %></td>
+        <% if history.status == "checkedout" %>
+            <td><%= link_to 'Return',returncar_path(:history_lic => history.lic,:history_id => history.id), method: :post %></td>
+        <%end%>
+        <% if history.status == "Reserved" %>
+            <td><%= link_to 'Cancel Reservation',returncar_path(:history_lic => history.lic,:history_id => history.id), method: :post %></td>
+            <td><%= link_to 'Edit Reservation',edit_history_path(history) %></td>
+            <% if !history.nil? %>
+            <% if history.status == "Reserved" and history.from <= Time.now%>
+                <td><%= link_to 'CheckOut',checkout_path(:car_lic => history.lic,:email =>history.email), method: :post %></td>
+            <%end%>
+            <%end%>
+        <%end%>
+      </tr>
+  <%end %>
+</table>
+</div>
+<%if session[:is_admin?]%>
+    <div class="btn btn-success topcorner">
+      <%= link_to 'Back',  members_url, method: :get, :style =>'color:#FFFFFF;' %></div>
+<%else%>
+    <div class="btn btn-success topcorner">
+      <%= link_to 'Back', cars_url, method: :get, :style =>'color:#FFFFFF;' %></div>
+<%end%>
+
+<div class="btn btn-success topcorner">
+  <%= link_to 'Home', cars_url, :style =>'color:#FFFFFF;'%></div>
+
+
+
